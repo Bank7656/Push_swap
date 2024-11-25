@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 04:20:37 by thacharo          #+#    #+#             */
-/*   Updated: 2024/11/26 04:22:04 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/11/26 04:58:35 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	ft_input_handling(int ac, char **av)
 		len = ft_strlen(av[i]);
 		while (j < len)
 		{
-			if (!(ft_isdigit(av[i][j]) || av[i][j] == ' ' || av[i][j] == '-') || av[i][j] == '+')
+			if (!(ft_isdigit(av[i][j]) || av[i][j] == ' '
+				|| av[i][j] == '-') || av[i][j] == '+')
 				return (1);
 			j++;
 		}
@@ -41,7 +42,7 @@ void	ft_get_number(t_list **lst, char *str, int *idx)
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
 	{
-		// Free
+		ft_lstclear(lst, free);
 		exit(0);
 	}
 	stack -> number = ft_atoi(str);
@@ -50,11 +51,11 @@ void	ft_get_number(t_list **lst, char *str, int *idx)
 	(*idx)++;
 }
 
-void ft_get_stack(t_list **head, int ac, char **av)
+void	ft_get_stack(t_list **head, int ac, char **av)
 {
-	int	i;
-	int	j;
-	int idx;
+	int		i;
+	int		j;
+	int		idx;
 	char	**words;
 
 	i = 0;
@@ -65,7 +66,7 @@ void ft_get_stack(t_list **head, int ac, char **av)
 		{
 			words = ft_split(av[i], ' ');
 			j = 0;
-			while (words[j][0] != '\0')
+			while (words[j] != NULL)
 				ft_get_number(head, words[j++], &idx);
 		}
 		else
@@ -75,10 +76,10 @@ void ft_get_stack(t_list **head, int ac, char **av)
 	return ;
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_list *stack;
-	t_list *ptr;
+	t_list	*stack;
+	t_list	*ptr;
 
 	stack = NULL;
 	if (ft_input_handling(argc, argv + 1))
@@ -91,7 +92,9 @@ int main(int argc, char *argv[])
 	ptr = stack;
 	while (ptr != NULL)
 	{
-		printf("Number:%i Index: %zu\n", ((t_stack *)(ptr -> content)) ->  number, ((t_stack *)(ptr -> content)) -> index);
+		printf("Number:%i Index: %zu\n",
+			((t_stack *)(ptr -> content))->number,
+			((t_stack *)(ptr -> content))->index);
 		ptr = ptr -> next;
 	}
 	ft_lstclear(&stack, free);
