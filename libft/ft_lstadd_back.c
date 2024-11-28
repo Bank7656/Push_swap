@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 22:34:22 by thacharo          #+#    #+#             */
-/*   Updated: 2024/11/28 04:08:36 by thacharo         ###   ########.fr       */
+/*   Created: 2024/09/04 10:38:57 by thacharo          #+#    #+#             */
+/*   Updated: 2024/09/04 19:23:43 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#endif
+#include "libft.h"
 
-#define EXIT_SUCCESS 0;
-#define EXIT_FAILURE 1;
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*ptr;
 
-#include "libft/libft.h"
-
-typedef struct s_stack {
-	int				number;
-	int				index;
-} t_stack;
-
-
+	if (new == NULL)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	ptr = ft_lstlast(*lst);
+	ptr -> next = new;
+	return ;
+}

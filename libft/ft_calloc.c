@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 22:34:22 by thacharo          #+#    #+#             */
-/*   Updated: 2024/11/28 04:08:36 by thacharo         ###   ########.fr       */
+/*   Created: 2024/08/29 14:09:53 by thacharo          #+#    #+#             */
+/*   Updated: 2024/09/05 23:48:30 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#endif
+#include "libft.h"
 
-#define EXIT_SUCCESS 0;
-#define EXIT_FAILURE 1;
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
 
-#include "libft/libft.h"
-
-typedef struct s_stack {
-	int				number;
-	int				index;
-} t_stack;
-
-
+	if (nmemb == 0 || size == 0)
+		return ((void *)malloc(0));
+	if (nmemb > INT_MAX / size)
+		return (NULL);
+	ptr = (void *)malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
+}

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_power_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 22:34:22 by thacharo          #+#    #+#             */
-/*   Updated: 2024/11/28 04:08:36 by thacharo         ###   ########.fr       */
+/*   Created: 2024/09/26 17:00:24 by thacharo          #+#    #+#             */
+/*   Updated: 2024/11/26 12:33:22 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#endif
+#include "libft.h"
 
-#define EXIT_SUCCESS 0;
-#define EXIT_FAILURE 1;
-
-#include "libft/libft.h"
-
-typedef struct s_stack {
-	int				number;
-	int				index;
-} t_stack;
-
-
+size_t	ft_power(int base, int n)
+{
+	if (n < 0)
+		return (0);
+	if (base == 0 || n == 0)
+		return (1);
+	return (base * ft_power(base, n - 1));
+}

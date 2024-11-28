@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 22:34:22 by thacharo          #+#    #+#             */
-/*   Updated: 2024/11/28 04:08:36 by thacharo         ###   ########.fr       */
+/*   Created: 2024/09/04 12:29:08 by thacharo          #+#    #+#             */
+/*   Updated: 2024/09/04 19:25:11 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#endif
+#include "libft.h"
 
-#define EXIT_SUCCESS 0;
-#define EXIT_FAILURE 1;
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*temp;
 
-#include "libft/libft.h"
-
-typedef struct s_stack {
-	int				number;
-	int				index;
-} t_stack;
-
-
+	temp = *lst;
+	if (*lst == NULL || del == NULL)
+	{
+		return ;
+	}
+	while (temp != NULL)
+	{
+		temp = temp -> next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
+	}
+}

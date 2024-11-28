@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 22:34:22 by thacharo          #+#    #+#             */
-/*   Updated: 2024/11/28 04:08:36 by thacharo         ###   ########.fr       */
+/*   Created: 2024/08/25 22:05:53 by thacharo          #+#    #+#             */
+/*   Updated: 2024/09/04 19:45:48 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#endif
+#include "libft.h"
 
-#define EXIT_SUCCESS 0;
-#define EXIT_FAILURE 1;
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
-#include "libft/libft.h"
-
-typedef struct s_stack {
-	int				number;
-	int				index;
-} t_stack;
-
-
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+		i++;
+	}
+	return (0);
+}

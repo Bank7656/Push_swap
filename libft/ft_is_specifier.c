@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_is_specifier_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 22:34:22 by thacharo          #+#    #+#             */
-/*   Updated: 2024/11/28 04:08:36 by thacharo         ###   ########.fr       */
+/*   Created: 2024/09/25 18:05:32 by thacharo          #+#    #+#             */
+/*   Updated: 2024/10/21 16:35:51 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#endif
-
-#define EXIT_SUCCESS 0;
-#define EXIT_FAILURE 1;
-
-#include "libft/libft.h"
-
-typedef struct s_stack {
-	int				number;
-	int				index;
-} t_stack;
-
-
+int	ft_is_specifier(char c)
+{
+	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'p' || c == 'x' || c == 'X' || c == '%')
+		return (1);
+	return (0);
+}

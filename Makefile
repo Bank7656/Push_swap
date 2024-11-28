@@ -50,7 +50,7 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS) $(HEADER) 
 	@echo "$(COLOUR_GREEN)Compile push_swap program$(END_COLOUR)"
 
-	$(CC) $(CFLAGS) $(OBJS) -L. -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -o $(NAME)
 	
 	@echo "$(COLOUR_GREEN)\n[push_swap] was created successfully >_< $(END_COLOUR)"
 
@@ -69,8 +69,9 @@ $(OBJ_DIR):
 	@echo "" # Newline
 
 $(LIBFT):
+	@echo "$(COLOUR_GREEN)Create libft.a$(END_COLOUR)"
 	$(MAKE) -C $(LIBFT_DIR)
-	cp $(LIBFT) ./
+	@echo "$(COLOUR_GREEN)[libft.a was created successfully] >_<\n$(END_COLOUR)"
 
 test: $(NAME)
 # Only one number
@@ -106,23 +107,22 @@ test: $(NAME)
 
 clean:
 	@echo "$(COLOUR_GREEN)Delete objects$(END_COLOUR)"
-	
-	rm -f $(LIBFT)
-
-	$(MAKE) clean -C $(LIBFT_DIR)
 
 	rm -rf $(OBJ_DIR)
+	
+	@echo "$(COLOUR_GREEN)Remove libft objects$(END_COLOUR)"
+
+	$(MAKE) clean -C $(LIBFT_DIR)
 	
 	@echo "" # Newline
 	
 fclean:
 	@echo "$(COLOUR_GREEN)Delete push_swap program$(END_COLOUR)"
 
-	rm -f $(LIBFT)
-
-	$(MAKE) fclean -C $(LIBFT_DIR)
-
 	rm -f $(NAME)
+
+	@echo "$(COLOUR_GREEN)Remove libft objects and libft.a$(END_COLOUR)"
+	$(MAKE) fclean -C $(LIBFT_DIR)
 
 	@echo "$(COLOUR_GREEN)\nDelete objects$(END_COLOUR)"
 
@@ -136,4 +136,4 @@ re: fclean all
 help:
 	@sed -ne '/@sed/!s/## //p' $(MAKEFILE_LIST)
 
-.PHONY: clean fclean test re
+.PHONY: clean fclean test help re
