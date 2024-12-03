@@ -2,7 +2,7 @@ CC = cc
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS = -fsanitize=address
 
-SRC = push_swap.c
+SRC = push_swap.c sort_index.c swap.c push.c rotate.c reverse_rotate.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJ_DIR = ./objects/
@@ -92,7 +92,7 @@ test: $(NAME)
 	@echo "$(COLOUR_BLUE)[Duplicate Number in the list]$(END_COLOUR)"
 	./$(NAME) 2 6 3 5 1 2
 	./$(NAME) "2 6 3 5 1 2"
-	./$(NAME) "2" "6" "3" "5" "1" "2"
+	./$(NAME) "2" "6" "3" "5" "1" ""
 # Not a digit
 	@echo "$(COLOUR_BLUE)[Not a digit]$(END_COLOUR)"
 	./$(NAME) a 3 2 1

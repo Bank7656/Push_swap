@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 04:20:37 by thacharo          #+#    #+#             */
-/*   Updated: 2024/11/28 14:36:55 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:16:43 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,31 @@ int	ft_input_handling(int ac, char **av)
 	return (0);
 }
 
-void	ft_get_number_list(t_list **lst, char *str, int *idx)
+void	ft_get_number_list(t_stack **stack, char *str, int *idx)
 {
-	t_stack	*stack;
+	t_data *data;
 
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (stack == NULL)
+	data = (t_data *)malloc(sizeof(t_data));
+	if (data == NULL || str[0] == 0 || idx < 0)
 	{
-		ft_lstclear(lst, free);
+		ft_printf("Error\n");
 		exit(0);
 	}
-	stack -> number = ft_atoi(str);
-	stack -> index = *idx;
-	ft_lstadd_back(lst, ft_lstnew((void *)stack));
+	data -> number = ft_atoi(str);
+	data -> index = -1;
+	ft_lstadd_back(&((*stack) -> head), ft_lstnew((void *)data));
 	(*idx)++;
+	
 }
 
-int	ft_get_stack(t_list **head, int ac, char **av)
+void ft_get_stack(t_stack **stack, int ac, char **av)
 {
 	int		i;
 	int		j;
 	int		idx;
 	char	**words;
-
+	t_list 	*temp;
+	
 	i = 0;
 	idx = 0;
 	while (i < ac - 1)
@@ -67,115 +69,123 @@ int	ft_get_stack(t_list **head, int ac, char **av)
 			words = ft_split(av[i], ' ');
 			j = 0;
 			while (words[j] != NULL)
-				ft_get_number_list(head, words[j++], &idx);
+				ft_get_number_list(stack, words[j++], &idx);
 		}
 		else
-			ft_get_number_list(head, av[i], &idx);
+			ft_get_number_list(stack, av[i], &idx);
 		i++;
 	}
-	return (idx);
+	(*stack) -> length = idx;
+	temp = (*stack) -> head;
+	while (temp -> next != NULL)
+		temp = temp -> next;
+	(*stack) -> tail = temp;
 }
 
-void	ft_print_list(t_list **lst)
+void	ft_print_list(t_stack **lst)
 {
 	t_list *ptr;
-	ptr = *lst;
+	int stack_number;
+	int stack_index;
+	
+	ptr = (*lst) -> head;
 	while (ptr != NULL)
 	{
-		ft_printf("Number: %i Index: %i\n",
-			((t_stack *)(ptr -> content))->number,
-			((t_stack *)(ptr -> content))->index);
+		stack_number = ((t_data *)(ptr -> content)) -> number;
+		stack_index = ((t_data *)(ptr -> content)) -> index;
+		ft_printf("Number: %i Index: %i\n", stack_number, stack_index);
 		ptr = ptr -> next;
 	}
+	return ;
 }
 
-void ft_sort_index(t_list **lst, int len)
+t_stack	*ft_create_stack(char stack_name)
 {
-	int		idx;	
-	int		prev;
-	int		check;
-	int		num_tmp0;
-	int		num_tmp1;
-	int		num_tmp2;
-	t_list *tmp1;
-	t_list *tmp2;
-	t_list *trav;
+	t_stack *temp;
 
-	// 0 to n index.
-	idx = 0;
-
-	// Comparison pointers.
-	tmp1 = (*lst);
-
-	// For skipping condition for the first loop
-	check = 0;
-
-	// Looping n times.
-	while (idx < len)
+	temp = (t_stack *)malloc(sizeof(t_stack));
+	if (temp == NULL)
 	{
-		tmp2 = tmp1;	
-		num_tmp1 = ((t_stack *)(tmp1 -> content)) -> number;
-		num_tmp0 = num_tmp1;
-		while (tmp2 != NULL)
-		{
-
-			num_tmp2 = ((t_stack *)(tmp2 -> content)) -> number;
-			if (num_tmp2 < num_tmp0)
-			{
-				if (check)
-				{
-					if (num_tmp2 > prev)
-						num_tmp0 = num_tmp2;
-				}
-				else
-					num_tmp0 = num_tmp2;
-			}
-			// Move tmp2 until end of the list.
-			tmp2 = tmp2 -> next;			
-		}	
-		
-		// Start checking previous lowest number.
-		check = 1;
-	
-		prev = num_tmp0; // Last lowest from current loop will use to the next one.
-
-		// If lowest number is at head, move to the next node
-		if (prev == num_tmp1)
-			tmp1 = tmp1 -> next;	
-
-		// Loop whole list for assign index
-		trav = (*lst);
-		while (trav != NULL)
-		{
-			if (((t_stack *)(trav -> content)) -> number == num_tmp0)
-			{
-				((t_stack *)(trav -> content)) -> index = idx;
-				break;	
-			}
-			
-			trav = trav -> next;
-		}
-		// return;
-		idx++;
+		// if stack b can't create pls free stack_a
+		exit(0);
 	}
+	temp -> length = 0;
+	temp -> name = stack_name;
+	temp -> head = NULL;
+	temp -> tail = NULL;
+	return (temp);
+}
+
+int	ft_check_duplicate(t_list **lst)
+{
+	int		number1;
+	int		number2;
+	t_list *trav1;
+	t_list *trav2;
+
+	trav1 = *lst;
+	while (trav1 != NULL)
+	{
+		trav2 = trav1 -> next;
+		number1 = ((t_data *)(trav1 -> content)) -> number;
+		while (trav2 != NULL)
+		{
+			number2 = ((t_data *)(trav2 -> content)) -> number;
+			// ft_printf("Check %i %i\n", number1, number2);
+			if (number1 == number2)
+			{
+				return (1);	
+			}
+			trav2 = trav2 -> next;
+		}
+		trav1 = trav1 -> next;
+	}
+	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
 	int		len;
-	t_list	*stack;
-	t_list	*ptr;
+	t_stack  *stack_a;
+	t_stack  *stack_b;
 
-	stack = NULL;
 	if (ft_input_handling(argc, argv + 1))
 	{
 		ft_printf("Invalid input\n");
 		return (EXIT_SUCCESS);
 	}
 	ft_printf("Valid input\n");
-	len = ft_get_stack(&stack, argc, argv + 1);
-	ft_sort_index(&stack, len);
-	ft_print_list(&stack);
-	ft_lstclear(&stack, free);
+	
+	// Create Stack from an input
+	stack_a = ft_create_stack('a');
+	stack_b = ft_create_stack('b');
+	
+	// Assgin value from stdin to the list
+	ft_get_stack(&stack_a, argc, argv + 1);
+	if (ft_check_duplicate(&(stack_a -> head)))
+	{
+		ft_lstclear(&(stack_a -> head), free);
+		ft_printf("Error\n");
+		exit(0);
+	}
+
+	// Sorting number index in the stack from low to high
+	ft_sort_index(&(stack_a -> head));
+
+	// swap(&(stack_a -> head), &(stack_b -> head), "ss");
+	// push(&(stack_a -> head), &(stack_b -> head), "pa");
+	// rotate(&stack_a, &stack_b, "ra");
+	// reverse_rotate(&stack_a, &stack_b, "rra");
+
+	// Print Stack
+	ft_printf("Stack A\n");
+	ft_print_list(&(stack_a));
+	ft_printf("Stack B\n");
+	ft_print_list(&(stack_b));
+	
+	ft_printf("Stack length %i\n", stack_a -> length);
+	// Clear Stack
+	ft_lstclear(&(stack_a -> head), free);
+	ft_lstclear(&(stack_b -> head), free);
 	return (EXIT_SUCCESS);
 }
