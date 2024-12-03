@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 04:20:37 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/03 12:16:43 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:57:33 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_input_handling(int ac, char **av)
 		while (j < len)
 		{
 			if (!(ft_isdigit(av[i][j]) || av[i][j] == ' '
-				|| av[i][j] == '-') || av[i][j] == '+')
+				|| av[i][j] == '-' || av[i][j] == '+'))
 				return (1);
 			j++;
 		}
@@ -145,7 +145,6 @@ int	ft_check_duplicate(t_list **lst)
 
 int	main(int argc, char *argv[])
 {
-	int		len;
 	t_stack  *stack_a;
 	t_stack  *stack_b;
 
@@ -176,6 +175,7 @@ int	main(int argc, char *argv[])
 	// push(&(stack_a -> head), &(stack_b -> head), "pa");
 	// rotate(&stack_a, &stack_b, "ra");
 	// reverse_rotate(&stack_a, &stack_b, "rra");
+	// ft_sort_stack(&(stack_a), &(stack_b));
 
 	// Print Stack
 	ft_printf("Stack A\n");

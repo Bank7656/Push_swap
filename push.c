@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 00:44:38 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/02 18:42:58 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:54:25 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ static void	push_stack(t_list **lst_to, t_list **lst_from)
 		*lst_to = top_stack;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 21:28:24 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/02 22:14:49 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:50:37 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ static void reverse_rotate_stack(t_list **lst_head, t_list **lst_tail)
 	trav -> next = NULL;
 	(*lst_tail) -> next = (*lst_head);
 	(*lst_head) = (*lst_tail);
-	(*lst_tail) = ft_lstlast(lst_head);
+	(*lst_tail) = trav;
 }
