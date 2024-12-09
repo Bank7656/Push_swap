@@ -16,8 +16,6 @@ static void 	push_stack(t_list **lst_a, t_list **lst_b);
 
 void	push(t_list **lst_a, t_list **lst_b, char *operation)
 {
-	t_list *top_stack;
-	
 	if (lst_a == NULL && lst_b == NULL)
 		return ;
 	if (ft_strncmp(operation, "pa", -1))

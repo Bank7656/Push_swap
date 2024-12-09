@@ -12,8 +12,10 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# if __APPLE__
+# ifndef __LINUX__
 #  define __LINUX__ 0
+# endif
+# if __APPLE__
 #  define NULL_PTR "0x0"
 # else
 #  define __APPLE__ 0

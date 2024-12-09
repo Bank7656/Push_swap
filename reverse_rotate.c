@@ -52,4 +52,5 @@ static void reverse_rotate_stack(t_list **lst_head, t_list **lst_tail)
 	(*lst_tail) -> next = (*lst_head);
 	(*lst_head) = (*lst_tail);
 	(*lst_tail) = trav;
+	(*lst_tail) -> next = NULL;
 }

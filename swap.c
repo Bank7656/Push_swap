@@ -38,15 +38,15 @@ void	swap(t_list **lst_a, t_list **lst_b, char *operation)
 
 static void	swap_stack(t_list **lst)
 {
-	int		temp;
+	t_data temp_stack;
 	t_data *stack_1;
 	t_data *stack_2;
 
 	if ((*lst) == NULL || (*lst) -> next == NULL)
 		return ;
-	stack_1 = (t_data *)((*lst) -> content);
-	stack_2 = (t_data *)((*lst) -> next -> content);
-	temp = stack_1 -> number;
-	stack_1 -> number = stack_2 -> number;
-	stack_2 -> number = temp;
+	stack_1 = (*lst) -> content;
+	stack_2 = (*lst) -> next -> content;
+	temp_stack = *stack_1;
+	*stack_1 = *stack_2;
+	*stack_2 = temp_stack;
 }

@@ -1,8 +1,8 @@
 CC = cc
 # CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -fsanitize=address
+# CFLAGS = -fsanitize=address
 
-SRC = push_swap.c sort_index.c swap.c push.c rotate.c reverse_rotate.c
+SRC = push_swap.c sort_index.c swap.c push.c rotate.c reverse_rotate.c sort_stack.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJ_DIR = ./objects/
@@ -44,7 +44,6 @@ END_COLOUR=\033[0m
 ## 	clean:	Remove objects file
 ## 	fclean:	Remove program and objects file
 
-
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS) $(HEADER) 
@@ -74,36 +73,46 @@ $(LIBFT):
 	@echo "$(COLOUR_GREEN)[libft.a was created successfully] >_<\n$(END_COLOUR)"
 
 test: $(NAME)
-# Only one number
-	@echo "$(COLOUR_BLUE)[Only one number.]$(END_COLOUR)"
-	./$(NAME) 123456 
-	./$(NAME) "123456"
+# # Only one number
+# 	@echo "$(COLOUR_BLUE)[Only one number.]$(END_COLOUR)"
+# 	./$(NAME) 123456 
+# 	./$(NAME) "123456"
 # Correct number list
 	@echo "$(COLOUR_BLUE)[Number list.]$(END_COLOUR)"
 	./$(NAME) 2 6 3 5 1 4 -2 -6 -3 -5 -1 -4
 	./$(NAME) "2 6 3 5 1 4 -2 -6 -3 -5 -1 -4"
 	./$(NAME) "2" "6" "3" "5" "1" "4" "-2" "-6" "-3" "-5" "-1" "-4"
-# Space
-	@echo "$(COLOUR_BLUE)[Spaces]$(END_COLOUR)"
-	./$(NAME) 2  1 6 7  8 5 -4
-	./$(NAME) "2  1 6 7  8 5 -4"
-	./$(NAME) "2 1  6  7" 8 5 -4
-# Duplicate
-	@echo "$(COLOUR_BLUE)[Duplicate Number in the list]$(END_COLOUR)"
-	./$(NAME) 2 6 3 5 1 2
-	./$(NAME) "2 6 3 5 1 2"
-	./$(NAME) "2" "6" "3" "5" "1" ""
-# Not a digit
-	@echo "$(COLOUR_BLUE)[Not a digit]$(END_COLOUR)"
-	./$(NAME) a 3 2 1
-	./$(NAME) "a 3 2 1"
-	./$(NAME) "a" "3" "2" "1"
-# Mix
-	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
-	./$(NAME) "4 7 8  9" -1 -5 7 20
-	./$(NAME) "fsjfsadf" 1 2 3 " 3" "04"
+# # Space
+# 	@echo "$(COLOUR_BLUE)[Spaces]$(END_COLOUR)"
+# 	./$(NAME) 2  1 6 7  8 5 -4
+# 	./$(NAME) "2  1 6 7  8 5 -4"
+# 	./$(NAME) "2 1  6  7" 8 5 -4
+# # Duplicate
+# 	@echo "$(COLOUR_BLUE)[Duplicate Number in the list]$(END_COLOUR)"
+# 	./$(NAME) 2 6 3 5 1 2
+# 	./$(NAME) "2 6 3 5 1 2"
+# 	./$(NAME) "2" "6" "3" "5" "1" ""
+# # Not a digit
+# 	@echo "$(COLOUR_BLUE)[Not a digit]$(END_COLOUR)"
+# 	./$(NAME) a 3 2 1
+# 	./$(NAME) "a 3 2 1"
+# 	./$(NAME) "a" "3" "2" "1"
+# # Mix
+# 	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
+# 	./$(NAME) "4 7 8  9" -1 -5 7 20
+# 	./$(NAME) "fsjfsadf" 1 2 3 " 3" "04"
 
+# # Test size 2 stack
+# 	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
+# 	./$(NAME) "2 1"
 
+# Test size 3 stack
+	./$(NAME) 1 2 3
+	./$(NAME) 1 3 2
+	./$(NAME) 2 1 3
+	./$(NAME) 2 3 1
+	./$(NAME) 3 1 2
+	./$(NAME) 3 2 1
 
 clean:
 	@echo "$(COLOUR_GREEN)Delete objects$(END_COLOUR)"

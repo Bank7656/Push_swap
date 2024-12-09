@@ -23,6 +23,7 @@ typedef struct s_data {
 
 typedef struct s_stack {
 	int		length;
+	int		midpoint;
 	char	name;
 	t_list *head;
 	t_list *tail;
@@ -34,5 +35,5 @@ void	swap(t_list **lst_a, t_list **lst_b, char *operation);
 void	push(t_list **lst_a, t_list **lst_b, char *operation);
 void	rotate(t_stack **stack_a, t_stack **stack_b, char *operation);
 void	reverse_rotate(t_stack **stack_a, t_stack **stack_b, char *operation);
-
+void	ft_sort_stack(t_stack **stack_a, t_stack **stack_b);
 
