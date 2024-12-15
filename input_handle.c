@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static int	ft_check_arg(char *arg)
+static  int	ft_check_arg(char *arg)
 {
 	int	i;
 	int	j;

@@ -2,7 +2,7 @@ CC = cc
 # CFLAGS = -Wall -Wextra -Werror
 # CFLAGS = -fsanitize=address
 
-SRC = push_swap.c input_handle.c
+SRC = push_swap.c input_handle.c node.c print.c exit.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJ_DIR = ./objects/

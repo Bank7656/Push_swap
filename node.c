@@ -1,0 +1,16 @@
+#include "push_swap.h"
+
+t_node	*create_node(t_data **data, char *str, int *idx)
+{
+	t_node *new_node;
+
+	new_node = (t_node *)malloc(sizeof(t_node));
+	if (new_node == NULL)
+        close_program(data);
+	new_node -> number =  ft_get_num_list(str);
+	new_node -> index = *idx;
+	new_node -> next = NULL;
+	new_node -> prev = NULL;
+	(*idx)++;
+	return (new_node);
+}
