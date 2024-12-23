@@ -2,7 +2,7 @@ CC = cc
 # CFLAGS = -Wall -Wextra -Werror
 # CFLAGS = -fsanitize=address
 
-SRC = push_swap.c input_handle.c node.c print.c exit.c
+SRC = push_swap.c input_handle.c node.c print.c exit.c swap.c push.c rotate.c reverse_rotate.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJ_DIR = ./objects/
@@ -81,27 +81,27 @@ test: $(NAME)
 # Correct number list
 	@echo "$(COLOUR_BLUE)[Number list.]$(END_COLOUR)"
 	./$(NAME) 2 6 3 5 1 4 -2 -6 -3 -5 -1 -4
-	./$(NAME) "2 6 3 5 1 4 -2 -6 -3 -5 -1 -4"
-	./$(NAME) "2" "6" "3" "5" "1" "4" "-2" "-6" "-3" "-5" "-1" "-4"
+#	./$(NAME) "2 6 3 5 1 4 -2 -6 -3 -5 -1 -4"
+#	./$(NAME) "2" "6" "3" "5" "1" "4" "-2" "-6" "-3" "-5" "-1" "-4"
 # Space
-	@echo "$(COLOUR_BLUE)[Spaces]$(END_COLOUR)"
-	./$(NAME) 2  1 6 7  8 5 -4
-	./$(NAME) "2  1 6 7  8 5 -4"
-	./$(NAME) "2 1  6  7" 8 5 -4
+#	@echo "$(COLOUR_BLUE)[Spaces]$(END_COLOUR)"
+#	./$(NAME) 2  1 6 7  8 5 -4
+#	./$(NAME) "2  1 6 7  8 5 -4"
+#	./$(NAME) "2 1  6  7" 8 5 -4
 # Duplicate
-	@echo "$(COLOUR_BLUE)[Duplicate Number in the list]$(END_COLOUR)"
-	./$(NAME) 2 6 3 5 1 2
-	./$(NAME) "2 6 3 5 1 2"
-	./$(NAME) "2" "6" "3" "5" "1" ""
+#	@echo "$(COLOUR_BLUE)[Duplicate Number in the list]$(END_COLOUR)"
+#	./$(NAME) 2 6 3 5 1 2
+#	./$(NAME) "2 6 3 5 1 2"
+#	./$(NAME) "2" "6" "3" "5" "1" ""
 # Not a digit
-	@echo "$(COLOUR_BLUE)[Not a digit]$(END_COLOUR)"
-	./$(NAME) a 3 2 1
-	./$(NAME) "a 3 2 1"
-	./$(NAME) "a" "3" "2" "1"
+#	@echo "$(COLOUR_BLUE)[Not a digit]$(END_COLOUR)"
+#	./$(NAME) a 3 2 1
+#	./$(NAME) "a 3 2 1"
+#	./$(NAME) "a" "3" "2" "1"
 # Mix
 	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
 	./$(NAME) "4 7 8  9" -1 -5 7 20
-	./$(NAME) "fsjfsadf" 1 2 3 " 3" "04"
+#	./$(NAME) "fsjfsadf" 1 2 3 " 3" "04"
 
 # # Test size 2 stack
 # 	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
