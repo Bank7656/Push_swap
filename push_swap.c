@@ -6,29 +6,14 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 21:17:05 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/23 14:36:18 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/24 15:01:29 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_create_stack(t_data **data)
-{
-	(*data) = (t_data *)malloc(sizeof(t_data));
-	if (*data == NULL)
-		close_program(data);
-	(*data) -> head_a = NULL;
-	(*data) -> head_b = NULL;
-	(*data) -> tail_a = NULL;
-	(*data) -> tail_b = NULL;
-	(*data) -> stack_a.name = 'A';
-	(*data) -> stack_b.name = 'B';
-	(*data) -> stack_a.length = 0;
-	(*data) -> stack_b.length = 0;
-	(*data) -> stack_a.median = 0;
-	(*data) -> stack_b.median = 0;
-}
 
+// Need to protect from stdin and handle INT_MAX, INT_MIN or more
 int	ft_get_num_list(char *str)
 {
 	int	num_len;
@@ -62,6 +47,7 @@ void	ft_get_list(t_data **data, char *str)
 	}
 }
 
+// Also need to handle duplicate number in the list
 int	ft_get_stack(t_data **data, int ac, char **argv)
 {
 	int	i;
@@ -69,7 +55,6 @@ int	ft_get_stack(t_data **data, int ac, char **argv)
 	char	**words;
 
 	i = -1;
-	j = 0;
 	while (++i < ac - 1)
 	{
 		if (ft_strchr(argv[i], ' '))
@@ -86,10 +71,11 @@ int	ft_get_stack(t_data **data, int ac, char **argv)
 		else
 			ft_get_list(data, argv[i]);
 	}
+	ft_get_stack_length(data);
 	return (0);
 }
 
-void ft_sort_stack(t_node **lst)
+void ft_sort_index(t_node **lst)
 {
 	int		idx;
 	t_node *tmp1;
@@ -122,37 +108,20 @@ int main(int argc, char **argv)
 		close_program(&data);
 	if (ft_get_stack(&data, argc, argv + 1))
 		close_program(&data);
+
+	// Before
 	printf("Before sort\n");
-	ft_sort_stack(&(data -> head_a));
+	ft_sort_index(&(data -> head_a));
 	ft_print_doubly_list(data);
-	// rotate(&data, "ra");
-	// reverse_rotate(&data, "rra");
-	for (int i = 0; i < 12 ; i++)
-	{
-		printf("%i times pushed\n", i + 1);
-		push(&data, "pb");
-		// ft_print_doubly_list(data);
-		printf("Stack A\n");
-		ft_print_forward_stack(data -> head_a);
-		ft_print_reverse_stack(data -> head_a);
-		printf("Stack B\n");
-		ft_print_forward_stack(data -> head_b);
-		ft_print_reverse_stack(data -> head_b);
-	}
-	for (int i = 0; i < 12 ; i++)
-	{
-		printf("%i times pushed back\n", i + 1);
-		push(&data, "pa");
-		// ft_print_doubly_list(data);
-		printf("Stack A\n");
-		ft_print_forward_stack(data -> head_a);
-		ft_print_reverse_stack(data -> head_a);
-		printf("Stack B\n");
-		ft_print_forward_stack(data -> head_b);
-		ft_print_reverse_stack(data -> head_b);
-	}
-	// swap(&data, "sa");
-	ft_clear_data(&data);
 	
+	// Sort
+	ft_sort_stack(&data);
+	
+	// After Sort
+	printf("After sort\n");
+	ft_print_doubly_list(data);
+	
+	// Clear
+	ft_clear_data(&data);
 	return (0);
 }

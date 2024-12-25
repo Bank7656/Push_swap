@@ -1,8 +1,8 @@
 CC = cc
 # CFLAGS = -Wall -Wextra -Werror
-# CFLAGS = -fsanitize=address
+CFLAGS = -g
 
-SRC = push_swap.c input_handle.c node.c print.c exit.c swap.c push.c rotate.c reverse_rotate.c
+SRC = push_swap.c input_handle.c node.c stack.c print.c exit.c swap.c push.c rotate.c reverse_rotate.c sort.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJ_DIR = ./objects/
@@ -103,17 +103,19 @@ test: $(NAME)
 	./$(NAME) "4 7 8  9" -1 -5 7 20
 #	./$(NAME) "fsjfsadf" 1 2 3 " 3" "04"
 
-# # Test size 2 stack
-# 	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
-# 	./$(NAME) "2 1"
+# Test size 2 stack
+test_2: $(NAME)
+	./$(NAME) 1 2
+	./$(NAME) 2 1
 
-# # Test size 3 stack
-# 	./$(NAME) 1 2 3
-# 	./$(NAME) 1 3 2
-# 	./$(NAME) 2 1 3
-# 	./$(NAME) 2 3 1
-# 	./$(NAME) 3 1 2
-# 	./$(NAME) 3 2 1
+# Test size 3 stack
+test_3: $(NAME)
+	./$(NAME) 1 2 3
+	./$(NAME) 1 3 2
+	./$(NAME) 2 1 3
+	./$(NAME) 2 3 1
+	./$(NAME) 3 1 2
+	./$(NAME) 3 2 1
 
 clean:
 	@echo "$(COLOUR_GREEN)Delete objects$(END_COLOUR)"

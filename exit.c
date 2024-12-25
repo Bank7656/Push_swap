@@ -6,7 +6,6 @@ void	ft_clear_data(t_data **data)
 
 	if (data == NULL)
 		return ;
-	// Need to free lst_a and lst_b toooo >_<
 	while ((*data) -> head_a != NULL)
 	{
 		temp = (*data) -> head_a;

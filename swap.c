@@ -17,20 +17,25 @@ void    swap(t_data **data, char *operation)
         return ;
     ft_putstr_fd(operation, 1);
     ft_putstr_fd("\n", 1);
+    ft_get_stack_length(data);
     return ;
 }
 
 static void    swap_stack(t_node **head)
 {
-    t_node *tmp;
+    int     tmp_num;
+    int     tmp_idx;
+    t_node  *first_stack;
+    t_node  *second_stack;
     
-    if (*head == NULL)
+    if (*head == NULL || (*head) -> next == NULL)
         return ;
-    tmp = *head;
-    (*head) = (*head) -> next;
-    (*head) -> prev = NULL;
-    tmp -> next = (*head) -> next;
-    (*head) -> next -> prev = tmp;
-    (*head) -> next = tmp;
-    tmp -> prev = (*head);
+    first_stack = (*head);
+    second_stack = (*head) -> next;
+    tmp_num = first_stack -> number;
+    tmp_idx = first_stack -> index;
+    first_stack -> number = second_stack -> number;
+    first_stack -> index = second_stack -> index;
+    second_stack -> number = tmp_num;
+    second_stack -> index = tmp_idx;
 }

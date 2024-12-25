@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 21:17:09 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/23 14:33:11 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/24 00:08:48 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void   push(t_data **data, char *operation)
         return ;
     ft_putstr_fd(operation, 1);
     ft_putstr_fd("\n", 1);
+    ft_get_stack_length(data);
     return ;
 } 
 
