@@ -2,7 +2,7 @@ CC = cc
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS = -g
 
-SRC = push_swap.c input_handle.c node.c stack.c print.c exit.c swap.c push.c rotate.c reverse_rotate.c sort.c
+SRC = push_swap.c input_handle.c node.c stack.c print.c exit.c swap.c push.c rotate.c reverse_rotate.c sort.c quick_sort.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJ_DIR = ./objects/

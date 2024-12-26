@@ -116,9 +116,9 @@ void	ft_print_forward_stack(t_node *lst)
 {
 	while (lst != NULL)
 	{
-		printf("[%d | %d] -> ", lst -> number, lst -> index);
+		ft_printf("[%d | %d] -> ", lst -> number, lst -> index);
 		lst = lst -> next;
 	}
-	printf("NULL\n");
+	ft_printf("NULL\n");
 }
 

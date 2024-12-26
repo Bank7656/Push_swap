@@ -50,6 +50,7 @@ void    reverse_rotate(t_data **data, char *operation);
 void    ft_sort_stack(t_data **data);
 
 
+void    quick_sort(t_data **data);
 
 void	ft_print_reverse_stack(t_node *lst);
 void	ft_print_forward_stack(t_node *lst);

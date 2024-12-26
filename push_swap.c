@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 21:17:05 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/24 15:01:29 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/25 17:34:14 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,16 +110,16 @@ int main(int argc, char **argv)
 		close_program(&data);
 
 	// Before
-	printf("Before sort\n");
+	// printf("Before sort\n");
 	ft_sort_index(&(data -> head_a));
-	ft_print_doubly_list(data);
+	// ft_print_doubly_list(data);
 	
 	// Sort
 	ft_sort_stack(&data);
 	
 	// After Sort
-	printf("After sort\n");
-	ft_print_doubly_list(data);
+	// printf("After sort\n");
+	// ft_print_doubly_list(data);
 	
 	// Clear
 	ft_clear_data(&data);

@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 23:00:04 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/24 15:25:22 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:04:46 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 
 int    ft_is_sorted(t_data *data);
 void    sort_three(t_data **data);
+void    quick_sort(t_data **data);
 
 void    ft_sort_stack(t_data **data)
 {
-    ft_is_sorted(*data);
+    // ft_is_sorted(*data);
     if ((*data) -> stack_a.length == 2)
     {
         if ((*data) -> head_a -> index > (*data) -> head_a -> next -> index)
             swap(data, "sa");
     }
-    if ((*data) -> stack_a.length == 3)
+    else if ((*data) -> stack_a.length == 3)
         sort_three(data);
-    ft_is_sorted(*data);
+    else
+        quick_sort(data);
+    // ft_is_sorted(*data);
     return ;   
 }
 
