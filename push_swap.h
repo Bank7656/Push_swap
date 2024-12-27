@@ -8,6 +8,7 @@
 
 typedef struct s_node
 {
+    int moves;
     int number;
     int index;
     struct s_node *next;
@@ -49,7 +50,8 @@ void    rotate(t_data **data, char *operation);
 void    reverse_rotate(t_data **data, char *operation);
 void    ft_sort_stack(t_data **data);
 
-
+int    ft_is_sorted(t_data *data);
+void    sort_three_with_stack(t_data **data);
 void    quick_sort(t_data **data);
 
 void	ft_print_reverse_stack(t_node *lst);

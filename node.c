@@ -8,6 +8,7 @@ t_node	*create_node(t_data **data, char *str)
 	if (new_node == NULL)
         close_program(data);
 	new_node -> number =  ft_get_num_list(str);
+	new_node -> moves = 0;
 	new_node -> next = NULL;
 	new_node -> prev = NULL;
 	return (new_node);
