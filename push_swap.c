@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 21:17:05 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/25 17:34:14 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/30 18:43:16 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int main(int argc, char **argv)
 	// printf("Before sort\n");
 	ft_sort_index(&(data -> head_a));
 	// ft_print_doubly_list(data);
+	(data) -> stack_a.max = (data) -> stack_a.length;
+    (data) -> stack_b.max = (data) -> stack_b.length;
 	
 	// Sort
 	ft_sort_stack(&data);

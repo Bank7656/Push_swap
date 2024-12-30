@@ -17,7 +17,6 @@ void    swap(t_data **data, char *operation)
         return ;
     ft_putstr_fd(operation, 1);
     ft_putstr_fd("\n", 1);
-    // ft_get_stack_length(data);
     return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 23:03:44 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/27 21:03:36 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/30 18:42:51 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void	ft_create_stack(t_data **data)
 	(*data) -> head_b = NULL;
 	(*data) -> tail_a = NULL;
 	(*data) -> tail_b = NULL;
-	(*data) -> stack_a.name = 'A';
-	(*data) -> stack_b.name = 'B';
 	(*data) -> stack_a.length = 0;
 	(*data) -> stack_b.length = 0;
-	(*data) -> stack_a.median = 0;
-	(*data) -> stack_b.median = 0;
+    (*data) -> stack_a.max = 0;
+    (*data) -> stack_b.max = 0;
 }
 
 

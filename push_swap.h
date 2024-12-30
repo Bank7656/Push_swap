@@ -9,6 +9,11 @@
 typedef struct s_node
 {
     int moves;
+    int     ra_count;
+    int     rra_count;
+    int     rb_count;
+    int     rrb_count;
+    int     diff;
     int number;
     int index;
     struct s_node *next;
@@ -18,8 +23,7 @@ typedef struct s_node
 typedef struct s_stack
 {
     int     length;
-    int     median;
-    char    name;
+    int     max;
 }   t_stack;
 
 typedef struct s_data
