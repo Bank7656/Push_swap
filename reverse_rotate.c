@@ -1,56 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 21:28:24 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/03 14:50:37 by thacharo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-static void reverse_rotate_stack(t_list **lst_head, t_list **lst_tail);
+static void    reverse_stack(t_node **head, t_node **tail);
 
-void	reverse_rotate(t_stack **stack_a, t_stack **stack_b, char *operation)
+void    reverse_rotate(t_data **data, char *operation)
 {
-	if (stack_a == NULL || stack_b == NULL)
-		return ;
-	if (!(ft_strncmp(operation, "rra", -1)))
-	{
-		reverse_rotate_stack(&((*stack_a) -> head), &((*stack_a) -> tail));
-	}
-	else if (!(ft_strncmp(operation, "rrb", -1)))
-	{
-		reverse_rotate_stack(&((*stack_b) -> head), &((*stack_b) -> tail));	
-	}
-	else if (!(ft_strncmp(operation, "rrr", -1)))
-	{
-		reverse_rotate_stack(&((*stack_a) -> head), &((*stack_a) -> tail));
-		reverse_rotate_stack(&((*stack_b) -> head), &((*stack_b) -> tail));	
-	}
-	else
-		return ;
-	ft_printf("%s\n", operation);
+    if (ft_strncmp(operation, "rra", -1) == 0)
+        reverse_stack(&((*data) -> head_a), &((*data) -> tail_a));
+    else if (ft_strncmp(operation, "rrb", -1) == 0)
+        reverse_stack(&((*data) -> head_b), &((*data) -> tail_b));
+    else if (ft_strncmp(operation, "rrr", - 1) == 0)
+    {
+        reverse_stack(&((*data) -> head_a), &((*data) -> tail_a));
+        reverse_stack(&((*data) -> head_b), &((*data) -> tail_b));
+    }
+    else
+        return ;
+    ft_putstr_fd(operation, 1);
+    ft_putstr_fd("\n", 1);
+    // ft_get_stack_length(data);
+    return ;   
 }
 
-static void reverse_rotate_stack(t_list **lst_head, t_list **lst_tail)
+static void    reverse_stack(t_node **head, t_node **tail)
 {
-	t_list *trav;
-
-	if (lst_head == NULL || lst_tail == NULL)
-		return;
-
-	trav = *lst_head;
-	if (trav -> next == NULL)
-		return ;
-	while (trav -> next -> next != NULL)
-		trav = trav -> next;
-	trav -> next = NULL;
-	(*lst_tail) -> next = (*lst_head);
-	(*lst_head) = (*lst_tail);
-	(*lst_tail) = trav;
-	(*lst_tail) -> next = NULL;
+    if (*head == NULL || *tail == NULL)
+        return ;
+    (*tail) -> next = *head;
+    (*head) -> prev = (*tail);
+    (*head) = (*head) -> prev;
+    (*tail) = (*tail) -> prev;
+    (*head) -> prev = NULL;
+    (*tail) -> next = NULL;
 }

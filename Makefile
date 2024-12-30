@@ -1,8 +1,8 @@
 CC = cc
 # CFLAGS = -Wall -Wextra -Werror
-# CFLAGS = -fsanitize=address
+CFLAGS = -g
 
-SRC = push_swap.c sort_index.c swap.c push.c rotate.c reverse_rotate.c sort_stack.c
+SRC = push_swap.c input_handle.c node.c stack.c print.c exit.c swap.c push.c rotate.c reverse_rotate.c sort.c quick_sort.c
 
 OBJECTS = $(SRC:.c=.o)
 OBJ_DIR = ./objects/
@@ -73,6 +73,7 @@ $(LIBFT):
 	@echo "$(COLOUR_GREEN)[libft.a was created successfully] >_<\n$(END_COLOUR)"
 
 test: $(NAME)
+	@echo "\n$(COLOUR_BLUE)[Test input arguments]$(END_COLOUR)\n"
 # # Only one number
 # 	@echo "$(COLOUR_BLUE)[Only one number.]$(END_COLOUR)"
 # 	./$(NAME) 123456 
@@ -80,33 +81,35 @@ test: $(NAME)
 # Correct number list
 	@echo "$(COLOUR_BLUE)[Number list.]$(END_COLOUR)"
 	./$(NAME) 2 6 3 5 1 4 -2 -6 -3 -5 -1 -4
-	./$(NAME) "2 6 3 5 1 4 -2 -6 -3 -5 -1 -4"
-	./$(NAME) "2" "6" "3" "5" "1" "4" "-2" "-6" "-3" "-5" "-1" "-4"
-# # Space
-# 	@echo "$(COLOUR_BLUE)[Spaces]$(END_COLOUR)"
-# 	./$(NAME) 2  1 6 7  8 5 -4
-# 	./$(NAME) "2  1 6 7  8 5 -4"
-# 	./$(NAME) "2 1  6  7" 8 5 -4
-# # Duplicate
-# 	@echo "$(COLOUR_BLUE)[Duplicate Number in the list]$(END_COLOUR)"
-# 	./$(NAME) 2 6 3 5 1 2
-# 	./$(NAME) "2 6 3 5 1 2"
-# 	./$(NAME) "2" "6" "3" "5" "1" ""
-# # Not a digit
-# 	@echo "$(COLOUR_BLUE)[Not a digit]$(END_COLOUR)"
-# 	./$(NAME) a 3 2 1
-# 	./$(NAME) "a 3 2 1"
-# 	./$(NAME) "a" "3" "2" "1"
-# # Mix
-# 	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
-# 	./$(NAME) "4 7 8  9" -1 -5 7 20
-# 	./$(NAME) "fsjfsadf" 1 2 3 " 3" "04"
+#	./$(NAME) "2 6 3 5 1 4 -2 -6 -3 -5 -1 -4"
+#	./$(NAME) "2" "6" "3" "5" "1" "4" "-2" "-6" "-3" "-5" "-1" "-4"
+# Space
+#	@echo "$(COLOUR_BLUE)[Spaces]$(END_COLOUR)"
+#	./$(NAME) 2  1 6 7  8 5 -4
+#	./$(NAME) "2  1 6 7  8 5 -4"
+#	./$(NAME) "2 1  6  7" 8 5 -4
+# Duplicate
+#	@echo "$(COLOUR_BLUE)[Duplicate Number in the list]$(END_COLOUR)"
+#	./$(NAME) 2 6 3 5 1 2
+#	./$(NAME) "2 6 3 5 1 2"
+#	./$(NAME) "2" "6" "3" "5" "1" ""
+# Not a digit
+#	@echo "$(COLOUR_BLUE)[Not a digit]$(END_COLOUR)"
+#	./$(NAME) a 3 2 1
+#	./$(NAME) "a 3 2 1"
+#	./$(NAME) "a" "3" "2" "1"
+# Mix
+	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
+	./$(NAME) "4 7 8  9" -1 -5 7 20
+#	./$(NAME) "fsjfsadf" 1 2 3 " 3" "04"
 
-# # Test size 2 stack
-# 	@echo "$(COLOUR_BLUE)[Mix]$(END_COLOUR)"
-# 	./$(NAME) "2 1"
+# Test size 2 stack
+test_2: $(NAME)
+	./$(NAME) 1 2
+	./$(NAME) 2 1
 
 # Test size 3 stack
+test_3: $(NAME)
 	./$(NAME) 1 2 3
 	./$(NAME) 1 3 2
 	./$(NAME) 2 1 3

@@ -1,52 +1,40 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 00:02:16 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/02 18:05:02 by thacharo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-static void	swap_stack(t_list **lst);
+static void    swap_stack(t_node **head);
 
-void	swap(t_list **lst_a, t_list **lst_b, char *operation)
+void    swap(t_data **data, char *operation)
 {
-	// Only one char is better
-	if (!(ft_strncmp(operation, "sa", -1)))
-	{
-		swap_stack(lst_a);
-	}
-	else if (!(ft_strncmp(operation, "sb", -1)))
-	{
-		swap_stack(lst_b);	
-	}
-	else if (!(ft_strncmp(operation, "ss", -1)))
-	{
-		swap_stack(lst_a);
-		swap_stack(lst_b);
-	}
-	else
-		return ;
-	ft_printf("%s\n", operation);
-	return ;
+    if (ft_strncmp(operation, "sa", -1) == 0)
+        swap_stack(&((*data) -> head_a));
+    else if (ft_strncmp(operation, "sb", -1) == 0)
+        swap_stack(&((*data) -> head_b));
+    else if (ft_strncmp(operation, "ss", - 1) == 0)
+    {
+        swap_stack(&((*data) -> head_a));
+        swap_stack(&((*data) -> head_b));
+    }
+    else
+        return ;
+    ft_putstr_fd(operation, 1);
+    ft_putstr_fd("\n", 1);
+    return ;
 }
 
-static void	swap_stack(t_list **lst)
+static void    swap_stack(t_node **head)
 {
-	t_data temp_stack;
-	t_data *stack_1;
-	t_data *stack_2;
-
-	if ((*lst) == NULL || (*lst) -> next == NULL)
-		return ;
-	stack_1 = (*lst) -> content;
-	stack_2 = (*lst) -> next -> content;
-	temp_stack = *stack_1;
-	*stack_1 = *stack_2;
-	*stack_2 = temp_stack;
+    int     tmp_num;
+    int     tmp_idx;
+    t_node  *first_stack;
+    t_node  *second_stack;
+    
+    if (*head == NULL || (*head) -> next == NULL)
+        return ;
+    first_stack = (*head);
+    second_stack = (*head) -> next;
+    tmp_num = first_stack -> number;
+    tmp_idx = first_stack -> index;
+    first_stack -> number = second_stack -> number;
+    first_stack -> index = second_stack -> index;
+    second_stack -> number = tmp_num;
+    second_stack -> index = tmp_idx;
 }
