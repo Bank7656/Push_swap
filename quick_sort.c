@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 20:04:47 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/30 19:28:56 by thacharo         ###   ########.fr       */
+/*   Updated: 2024/12/30 21:22:27 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void    ft_reset_count_moves(t_data **data);
 
 void    update_stack(t_data **data);
 
+t_node    *find_candidate(t_data **data);
+void    rotate_operation(t_data **data, t_node *node);
 int     ft_check_median(t_node *head, int median);
 static void     divide_stack(t_data **data, int lower_bound, int upper_bound);
 static void     conquer_stack(t_data **data);
@@ -51,541 +53,19 @@ void    update_stack(t_data **data)
 
 static void     conquer_stack(t_data **data)
 {
-    t_node *tmp;
-    
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
+    t_node *candidate;
 
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rr");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "rb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    rotate(data, "ra");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrr");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);
-    reverse_rotate(data, "rra");
-    update_stack(data);    
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    reverse_rotate(data, "rrb");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-    push(data, "pa");
-    update_stack(data);
-
-
-
-    
+    while ((*data) -> stack_b.length > 0)
+    {
+        update_stack(data);
+        candidate = find_candidate(data);
+        if (candidate == NULL)
+            break;
+        rotate_operation(data, candidate);
+        push(data, "pa");
+    }
+    while (!(ft_is_sorted(*data)))
+        reverse_rotate(data, "rra");
     
     // tmp = (*data) -> head_a;
     // while (tmp != NULL)
@@ -604,6 +84,75 @@ static void     conquer_stack(t_data **data)
     //     tmp = tmp -> next;
     // }
     return ;
+}
+
+void    rotate_operation(t_data **data, t_node *node)
+{
+    while (node -> ra_count > 0 || node -> rb_count > 0)
+    {
+        if (node -> ra_count > 0 && node -> rb_count > 0)
+        {
+            rotate(data, "rr");
+            node -> ra_count--;
+            node -> rb_count--;
+        }
+        else if (node -> ra_count > 0)
+        {
+            rotate(data, "ra");
+            node -> ra_count--;
+        }
+        else if (node -> rb_count > 0)
+        {
+            rotate(data, "rb");
+            node -> rb_count--;
+        }
+    }
+    while (node -> rra_count > 0 || node -> rrb_count > 0)
+    {
+        if (node -> rra_count > 0 && node -> rrb_count > 0)
+        {
+            reverse_rotate(data, "rrr");
+            node -> rra_count--;
+            node -> rrb_count--;
+        }
+        else if (node -> rra_count > 0)
+        {
+            reverse_rotate(data, "rra");
+            node -> rra_count--;
+        }
+        else if (node -> rrb_count > 0)
+        {
+            reverse_rotate(data, "rrb");
+            node -> rrb_count--;
+        }
+    }
+}
+
+t_node    *find_candidate(t_data **data)
+{
+    t_node *tmp;
+    t_node *trav1;
+    t_node *trav2;
+    
+    if ((*data) -> head_b == NULL)
+        return (NULL);
+    trav1 = (*data) -> head_b;
+    tmp = trav1;
+    if (tmp -> next == NULL)
+        return (tmp);
+    trav2 = trav1 -> next;
+    while (trav2 != NULL)
+    {
+        if ((trav2->moves) + (trav2->diff) < (tmp->moves) + (tmp->diff))
+            tmp = trav2;
+        else if ((trav2->moves) + (trav2->diff) == (tmp->moves) + (tmp->diff))
+        {
+            if (trav2 -> diff < tmp -> diff)
+                tmp = trav2;
+        }
+        trav2 = trav2 -> next;        
+    }
+    return (tmp);
 }
 
 void    ft_reset_count_moves(t_data **data)
