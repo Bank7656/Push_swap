@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/02 16:22:28 by thacharo          #+#    #+#             */
+/*   Updated: 2025/01/02 16:24:15 by thacharo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_clear_data(t_data **data)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	if (data == NULL)
 		return ;
-	while ((*data) -> head_a != NULL)
+	while ((*data)->head_a != NULL)
 	{
-		temp = (*data) -> head_a;
-		(*data) -> head_a = (*data) -> head_a -> next;
+		temp = (*data)->head_a;
+		(*data)->head_a = (*data)->head_a->next;
 		free(temp);
 	}
-	while ((*data) -> head_b != NULL)
+	while ((*data)->head_b != NULL)
 	{
-		temp = (*data) -> head_b;
-		(*data) -> head_b = (*data) -> head_b -> next;
+		temp = (*data)->head_b;
+		(*data)->head_b = (*data)->head_b->next;
 		free(temp);
 	}
 	free(*data);

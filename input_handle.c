@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_handle.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/02 16:24:26 by thacharo          #+#    #+#             */
+/*   Updated: 2025/01/02 16:26:17 by thacharo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	ft_check_arg(char *arg);
@@ -13,21 +25,28 @@ int	ft_input_handling(int ac, char **argv)
 			return (1);
 		i++;
 	}
-	return (0);	
+	return (0);
 }
 
-static  int	ft_check_arg(char *arg)
+static int	ft_check_arg(char *arg)
 {
 	int	i;
 	int	j;
+	int	is_number_in_arg;
 
 	i = 0;
 	j = 0;
+	is_number_in_arg = 0;
 	while (arg[i] != '\0')
 	{
-		if (!(ft_isdigit(arg[i]) || arg[i] == ' ' || arg[i] == '+' || arg[i] == '-'))
+		if (!(ft_isdigit(arg[i]) || arg[i] == ' '
+				|| arg[i] == '+' || arg[i] == '-'))
 			return (1);
+		else if (ft_isdigit(arg[i]))
+			is_number_in_arg = 1;
 		i++;
 	}
+	if (!(is_number_in_arg))
+		return (1);
 	return (0);
 }
