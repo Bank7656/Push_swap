@@ -6,52 +6,51 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 21:17:09 by thacharo          #+#    #+#             */
-/*   Updated: 2024/12/26 00:29:59 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:30:13 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void push_stack(t_node **head_dest, t_node **tail_dest, t_node **head_src);
+static void	push_stack(t_node **headDst, t_node **tailDst, t_node **headSrc);
 
-void   push(t_data **data, char *operation)
+void	push(t_data **data, char *operation)
 {
-    if (ft_strncmp(operation, "pa", -1) == 0)
-        push_stack(&((*data) -> head_a), &((*data) -> tail_a), &((*data) -> head_b));
-    else if (ft_strncmp(operation, "pb", -1) == 0)
-        push_stack(&((*data) -> head_b), &((*data) -> tail_b),  &((*data) -> head_a));
-    else
-        return ;
-    ft_putstr_fd(operation, 1);
-    ft_putstr_fd("\n", 1);
-    // ft_get_stack_length(data);
-    return ;
-} 
+	if (ft_strncmp(operation, "pa", -1) == 0)
+		push_stack(&((*data)->head_a), &((*data)->tail_a), &((*data)->head_b));
+	else if (ft_strncmp(operation, "pb", -1) == 0)
+		push_stack(&((*data)->head_b), &((*data)->tail_b), &((*data)->head_a));
+	else
+		return ;
+	ft_putstr_fd(operation, 1);
+	ft_putstr_fd("\n", 1);
+	return ;
+}
 
-static void push_stack(t_node **head_dest, t_node **tail_dest, t_node **head_src)
+static void	push_stack(t_node **headDst, t_node **tailDst, t_node **headSrc)
 {
-    t_node *tmp_stack;
+	t_node	*tmp_stack;
 
-    if ((*head_src) == NULL)
-        return ;
-    tmp_stack = *head_src;
-    if ((*head_src) -> next != NULL)
-    {
-        *head_src = (*head_src) -> next;
-        tmp_stack -> next = NULL;
-        (*head_src) -> prev = NULL;
-    }
-    else
-        *head_src = NULL;
-    if ((*head_dest) == NULL)
-    {
-        *head_dest = tmp_stack;
-        *tail_dest = tmp_stack;
-    }
-    else
-    {
-        tmp_stack -> next = *head_dest;
-        (*head_dest) -> prev = tmp_stack;
-        *head_dest = tmp_stack;
-    }
+	if ((*headSrc) == NULL)
+		return ;
+	tmp_stack = *headSrc;
+	if ((*headSrc)->next != NULL)
+	{
+		*headSrc = (*headSrc)->next;
+		tmp_stack -> next = NULL;
+		(*headSrc)->prev = NULL;
+	}
+	else
+		*headSrc = NULL;
+	if ((*headDst) == NULL)
+	{
+		*headDst = tmp_stack;
+		*tailDst = tmp_stack;
+	}
+	else
+	{
+		tmp_stack -> next = *headDst;
+		(*headDst)->prev = tmp_stack;
+		*headDst = tmp_stack;
+	}
 }
