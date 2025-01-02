@@ -6,13 +6,11 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:30:33 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 19:02:47 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:13:52 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_checking_number(char *str, int len);
 
 void	ft_sort_index(t_node **lst)
 {

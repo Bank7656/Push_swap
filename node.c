@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 01:46:34 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 19:21:52 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/03 05:01:25 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	ft_get_num_list(t_data **data, char *str);
 static int	ft_checking_number(char *str, int len);
+static int	ft_check_front_zero(char *str);
 
 t_node	*create_node(t_data **data, char *str)
 {
@@ -43,6 +44,8 @@ static int	ft_get_num_list(t_data **data, char *str)
 	num_len = ft_strlen(str);
 	if (ft_checking_number(str, num_len))
 		number = ft_atoi(str);
+	else if (ft_check_front_zero(str))
+		number = ft_atoi(str);
 	else
 		close_program(data);
 	return (number);
@@ -63,4 +66,23 @@ static int	ft_checking_number(char *str, int len)
 			return (0);
 	}
 	return (1);
+}
+
+static int	ft_check_front_zero(char *str)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] == '0')
+		i++;
+	len = ft_strlen(str + i);
+	if (str[0] == '-' && len == 10)
+	{
+		if (ft_strncmp(str + i, "2147483648", len) <= 0)
+			return (1);
+	}
+	return (ft_checking_number(str + i, len));
 }

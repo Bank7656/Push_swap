@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:24:26 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 16:26:17 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:09:45 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,25 @@ static int	ft_check_arg(char *arg)
 {
 	int	i;
 	int	j;
+	int	sign;
 	int	is_number_in_arg;
 
-	i = 0;
+	i = -1;
 	j = 0;
+	sign = 0;
 	is_number_in_arg = 0;
-	while (arg[i] != '\0')
+	while (arg[++i] != '\0')
 	{
 		if (!(ft_isdigit(arg[i]) || arg[i] == ' '
-				|| arg[i] == '+' || arg[i] == '-'))
+			|| arg[i] == '+' || arg[i] == '-'))
 			return (1);
+		else if (arg[i] == '-' || arg[i] == '+')
+		{
+			if (sign++)
+				return (1);
+		}
 		else if (ft_isdigit(arg[i]))
 			is_number_in_arg = 1;
-		i++;
 	}
 	if (!(is_number_in_arg))
 		return (1);

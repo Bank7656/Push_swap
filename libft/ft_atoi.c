@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:05:00 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 13:32:15 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/03 05:00:47 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	ft_atoi(const char *nptr)
 	number = 0;
 	if (nptr == NULL)
 		return (0);
+	// if (nptr[i] == '-')
+	// 	sign = -1;
+	// else if (nptr[i] == '+')
+	// 	sign
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
 	while (nptr[i] == '-' || nptr[i] == '+')
@@ -58,8 +62,10 @@ static int	ft_atoi_number(const char *str, int sign)
 	}
 	if (str[i] != '\0')
 		return (0);
-	if (tmp > INT_MAX)
+	if (tmp > INT_MAX && (tmp * sign != INT_MIN))
 		number = 0;
+	else if (tmp * sign == INT_MIN)
+		return (INT_MIN);
 	else if (tmp < INT_MIN)
 		number = 0;
 	else
