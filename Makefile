@@ -77,6 +77,36 @@ $(LIBFT) : $(LIBFT_OBJS)
 $(LIBFT_OBJS):
 	$(MAKE) -C $(LIBFT_DIR)
 
+
+BONUS_SRC = checker_bonus.c exit_bonus.c stack_bonus.c node_bonus.c input_handle_bonus.c \
+			swap_bonus.c push_bonus.c rotate_bonus.c reverse_rotate_bonus.c
+BONUS_OBJECTS = $(BONUS_SRC:.c=.o)
+BONUS_OBJ_DIR = ./objects_bonus/
+BONUS_HEADER_DIR = ./
+BONUS_OBJS = $(addprefix $(BONUS_OBJ_DIR), $(BONUS_OBJECTS))
+BONUS_HEADER = checker_bonus.h
+BONUS_NAME = checker
+
+
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(LIBFT) $(HEADER) $(BONUS_OBJ_DIR) $(BONUS_HEADER) $(BONUS_OBJS) 
+	@echo "$(COLOUR_GREEN)Compile checker program$(END_COLOUR)"
+	$(CC) $(CFLAGS) $(BONUS_OBJS) -L./libft -lft -o $(BONUS_NAME)
+	@echo "$(COLOUR_GREEN)\n[checker] was created successfully >_< $(END_COLOUR)"
+
+$(BONUS_OBJ_DIR)%.o: %.c
+	@echo "$(COLOUR_GREEN)Compile .c into .o$(END_COLOUR)"
+
+	$(CC) $(CFLAGS) -I $(BONUS_HEADER_DIR) -c $< -o $@
+
+$(BONUS_OBJ_DIR):
+	@echo "$(COLOUR_GREEN)Create object directory$(END_COLOUR)"
+
+	mkdir $(BONUS_OBJ_DIR)
+
+	@echo "" # Newline
+
 test: $(NAME)
 	@echo "\n$(COLOUR_BLUE)[Test input arguments]$(END_COLOUR)\n"
 # Only one number
@@ -112,6 +142,10 @@ clean:
 	@echo "$(COLOUR_GREEN)Delete objects$(END_COLOUR)"
 
 	rm -rf $(OBJ_DIR)
+
+	@echo "$(COLOUR_GREEN)Delete bonus objects$(END_COLOUR)"
+
+	rm -rf $(BONUS_OBJ_DIR)
 	
 	@echo "$(COLOUR_GREEN)Remove libft objects$(END_COLOUR)"
 
@@ -131,7 +165,13 @@ fclean:
 
 	rm -rf $(OBJ_DIR)
 
+	@echo "$(COLOUR_GREEN)Delete bonus objects$(END_COLOUR)"
+
+	rm -rf $(BONUS_OBJ_DIR)
+
 	@echo "" # Newline
+
+	
 
 
 re: fclean all 
