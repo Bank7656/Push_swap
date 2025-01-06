@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 20:51:50 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/06 14:28:20 by thacharo         ###   ########.fr       */
+/*   Created: 2025/01/04 15:38:25 by thacharo          #+#    #+#             */
+/*   Updated: 2025/01/06 14:50:28 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "libft/libft.h"
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # define ERROR_MSG "Error\n"
+
+# include "libft/libft.h"
 
 typedef struct s_node
 {
@@ -47,32 +47,17 @@ typedef struct s_data
 	t_stack	stack_b;
 }	t_data;
 
-int		ft_input_handling(int ac, char **argv);
-
-void	ft_get_stack(t_data **data, int ac, char **argv);
-void	ft_create_stack(t_data **data);
-
-void	ft_clear_data(t_data **data);
+void	ft_sort_index(t_node **lst);
+int		ft_is_sorted(t_data *data);
 void	close_program(t_data **data);
-t_node	*create_node(t_data **data, char *str);
-
+void	ft_create_stack(t_data **data);
+void	ft_get_stack(t_data **data, int ac, char **argv);
 void	ft_get_stack_length(t_data **data);
-
+int		ft_input_handling(int ac, char **argv);
+void	ft_clear_data(t_data **data);
+t_node	*create_node(t_data **data, char *str);
 void	swap(t_data **data, char *operation);
 void	push(t_data **data, char *operation);
 void	rotate(t_data **data, char *operation);
 void	reverse_rotate(t_data **data, char *operation);
-void	ft_sort_stack(t_data **data);
-
-int		ft_is_sorted(t_data *data);
-void	sort_three_with_stack(t_data **data);
-void	divide_and_conquer(t_data **data);
-
-t_node	*find_candidate(t_data **data);
-void	ft_find_diff(t_data **data);
-void	ft_sum_moves(t_data **data);
-void	ft_reset_count_moves(t_data **data);
-void	ft_count_moves_a(t_data **data);
-void	ft_count_moves_b(t_data **data);
-void	divide_stack(t_data **data, int lower_bound, int upper_bound);
 #endif

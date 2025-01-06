@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node.c                                             :+:      :+:    :+:   */
+/*   node_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 01:46:34 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/06 14:49:41 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:49:48 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static int	ft_get_num_list(t_data **data, char *str);
 static int	ft_checking_number(char *str, int len);
@@ -41,8 +41,8 @@ static int	ft_get_num_list(t_data **data, char *str)
 	int	num_len;
 	int	number;
 
-	num_len = ft_strlen(str);
 	number = 0;
+	num_len = ft_strlen(str);
 	if (ft_checking_number(str, num_len))
 		number = ft_atoi(str);
 	else if (ft_check_front_zero(str))

@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 SRC = 	ft_isalpha.c \
 		ft_isdigit.c \
@@ -63,8 +63,8 @@ SRC = 	ft_isalpha.c \
 		ft_is_plus.c \
 		ft_is_sharp.c \
 		ft_is_zero.c \
-		ft_count_digit.c
-
+		ft_count_digit.c \
+		get_next_line.c \
 
 OBJECTS = $(SRC:.c=.o)
 HEADER = libft.h

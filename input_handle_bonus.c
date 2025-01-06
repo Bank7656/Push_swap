@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_handle.c                                     :+:      :+:    :+:   */
+/*   input_handle_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:24:26 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/06 14:49:20 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:49:32 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static int	ft_check_arg(char *arg);
 
