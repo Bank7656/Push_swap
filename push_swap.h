@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:51:50 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 21:26:22 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:28:20 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_data
 
 int		ft_input_handling(int ac, char **argv);
 
-int		ft_get_stack(t_data **data, int ac, char **argv);
+void	ft_get_stack(t_data **data, int ac, char **argv);
 void	ft_create_stack(t_data **data);
 
 void	ft_clear_data(t_data **data);

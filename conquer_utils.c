@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:04:39 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 20:47:45 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/06 13:18:41 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void	ft_check_index_a_top(t_data **data, t_node *node_b, int midpoint)
 {
 	int		i;
 	t_node	*tmp;
-	t_node	*trav;
 
 	i = 0;
 	tmp = (*data)->head_a;
@@ -57,7 +56,6 @@ static void	ft_check_index_a_bot(t_data **data, t_node *node_b, int midpoint)
 {
 	int		i;
 	t_node	*tmp;
-	t_node	*trav;
 
 	i = 0;
 	tmp = (*data)->tail_a;

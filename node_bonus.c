@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 01:46:34 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/05 03:04:54 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:49:48 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	ft_get_num_list(t_data **data, char *str)
 	int	num_len;
 	int	number;
 
+	number = 0;
 	num_len = ft_strlen(str);
 	if (ft_checking_number(str, num_len))
 		number = ft_atoi(str);

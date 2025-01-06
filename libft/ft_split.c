@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 18:04:59 by thacharo          #+#    #+#             */
-/*   Updated: 2024/10/13 16:08:03 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:25:23 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ char	**ft_split(char const *s, char c)
 	char	**words;
 	int		num_words;
 
+	if (s == NULL)
+		return (NULL);
 	num_words = count_words(s, c);
 	words = (char **)malloc(sizeof(char *) * (num_words + 1));
 	if (words == NULL)

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 16:30:33 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/06 14:49:59 by thacharo         ###   ########.fr       */
+/*   Created: 2025/01/06 14:37:49 by thacharo          #+#    #+#             */
+/*   Updated: 2025/01/06 14:47:51 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 void	ft_sort_index(t_node **lst)
 {
@@ -34,20 +34,22 @@ void	ft_sort_index(t_node **lst)
 	}
 }
 
-int	main(int argc, char **argv)
+int	ft_is_sorted(t_data *data)
 {
-	t_data	*data;
+	t_node	*tmp_node1;
+	t_node	*tmp_node2;
 
-	if (argc < 2)
-		return (0);
-	ft_create_stack(&data);
-	if (ft_input_handling(argc, argv + 1))
-		close_program(&data);
-	ft_get_stack(&data, argc, argv + 1);
-	ft_sort_index(&(data -> head_a));
-	data -> stack_a.max = data -> stack_a.length;
-	data -> stack_b.max = data -> stack_b.length;
-	ft_sort_stack(&data);
-	ft_clear_data(&data);
-	return (0);
+	tmp_node1 = data -> head_a;
+	while (tmp_node1 != NULL)
+	{
+		tmp_node2 = tmp_node1 -> next;
+		while (tmp_node2 != NULL)
+		{
+			if (tmp_node1 -> index > tmp_node2 -> index)
+				return (0);
+			tmp_node2 = tmp_node2 -> next;
+		}
+		tmp_node1 = tmp_node1 -> next;
+	}
+	return (1);
 }

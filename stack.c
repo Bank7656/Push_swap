@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 23:03:44 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 19:03:11 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:27:12 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_create_stack(t_data **data)
 	(*data)->stack_b.max = 0;
 }
 
-int	ft_get_stack(t_data **data, int ac, char **argv)
+void	ft_get_stack(t_data **data, int ac, char **argv)
 {
 	int		i;
 	int		j;
@@ -42,6 +42,8 @@ int	ft_get_stack(t_data **data, int ac, char **argv)
 		if (ft_strchr(argv[i], ' '))
 		{
 			words = ft_split(argv[i], ' ');
+			if (words == NULL)
+				close_program(data);
 			j = 0;
 			while (words[j] != NULL)
 			{
@@ -54,7 +56,6 @@ int	ft_get_stack(t_data **data, int ac, char **argv)
 			ft_get_list(data, argv[i]);
 	}
 	ft_get_stack_length(data);
-	return (0);
 }
 
 static void	ft_get_list(t_data **data, char *str)
