@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:05:00 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/03 05:00:47 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:06:07 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,13 @@ int	ft_atoi(const char *nptr)
 {
 	int		i;
 	int		sign;
-	int	number;
+	int		number;
 
 	i = 0;
 	sign = 0;
 	number = 0;
 	if (nptr == NULL)
 		return (0);
-	// if (nptr[i] == '-')
-	// 	sign = -1;
-	// else if (nptr[i] == '+')
-	// 	sign
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
 	while (nptr[i] == '-' || nptr[i] == '+')
@@ -48,17 +44,17 @@ int	ft_atoi(const char *nptr)
 
 static int	ft_atoi_number(const char *str, int sign)
 {
-	int	i;
-	int number;
-	long tmp;
-	
+	int		i;
+	int		number;
+	long	tmp;
+
 	i = 0;
 	tmp = 0;
 	number = 0;
 	while (ft_isdigit(str[i]))
 	{
 		tmp = (tmp * 10) + str[i] - '0';
-		i++;		
+		i++;
 	}
 	if (str[i] != '\0')
 		return (0);
@@ -71,4 +67,4 @@ static int	ft_atoi_number(const char *str, int sign)
 	else
 		number = tmp;
 	return (number * sign);
-}	
+}

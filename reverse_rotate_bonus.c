@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   reverse_rotate_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:52:44 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 18:54:19 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/08 03:31:04 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	reverse_rotate(t_data **data, char *operation)
 	}
 	else
 		return ;
-	ft_putstr_fd(operation, 1);
-	ft_putstr_fd("\n", 1);
 	return ;
 }
 

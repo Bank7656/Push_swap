@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:46:19 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/03 22:53:36 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:06:43 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,12 +124,10 @@ void		update_arg(t_arg *arg, char **tmp);
 void		ft_get_specifier(t_arg *arg, const char *s, int *i);
 void		ft_get_asterisk_arg(t_arg *arg, va_list *ptr, int n);
 size_t		ft_power(int base, int n);
-
-
-int		clear_remain(char **line, char **remain, char *tmp, int count);
-char	*get_next_line(int fd);
-char	*get_remain(char **remain, char *buffer, int *remain_check);
-char	*get_read(char **line, char **remaining, char **buffer, int fd);
-void	get_current_line(char **line, char *buffer);
+int			clear_remain(char **line, char **remain, char *tmp, int count);
+char		*get_next_line(int fd);
+char		*get_remain(char **remain, char *buffer, int *remain_check);
+char		*get_read(char **line, char **remaining, char **buffer, int fd);
+void		get_current_line(char **line, char *buffer);
 
 #endif

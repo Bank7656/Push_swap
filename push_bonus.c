@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   push_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 21:17:09 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/02 16:30:13 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/08 03:30:41 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	push(t_data **data, char *operation)
 		push_stack(&((*data)->head_b), &((*data)->tail_b), &((*data)->head_a));
 	else
 		return ;
-	ft_putstr_fd(operation, 1);
-	ft_putstr_fd("\n", 1);
 	return ;
 }
 

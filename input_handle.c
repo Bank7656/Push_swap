@@ -6,13 +6,14 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 16:24:26 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/06 14:49:20 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:05:16 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	ft_check_arg(char *arg);
+static int	check_front_sign(const char *str, int index);
 
 int	ft_input_handling(int ac, char **argv)
 {
@@ -44,6 +45,8 @@ static int	ft_check_arg(char *arg)
 			return (1);
 		else if (arg[i] == '-' || arg[i] == '+')
 		{
+			if (check_front_sign(arg, i))
+				return (1);
 			if (sign++)
 				return (1);
 		}
@@ -51,6 +54,15 @@ static int	ft_check_arg(char *arg)
 			is_number_in_arg = 1;
 	}
 	if (!(is_number_in_arg))
+		return (1);
+	return (0);
+}
+
+static int	check_front_sign(const char *str, int index)
+{
+	if (index == 0)
+		return (0);
+	if (ft_isdigit(str[index - 1]))
 		return (1);
 	return (0);
 }

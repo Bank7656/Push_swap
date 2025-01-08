@@ -6,7 +6,7 @@
 /*   By: thacharo <thacharo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:38:08 by thacharo          #+#    #+#             */
-/*   Updated: 2025/01/06 14:47:43 by thacharo         ###   ########.fr       */
+/*   Updated: 2025/01/08 03:30:10 by thacharo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	ft_do_operation(t_data **data, char *str)
 	if (operation == NULL)
 		close_program(data);
 	if ((ft_strncmp(operation, "sa", -1) == 0)
-		|| (ft_strncmp(str, "sb", -1) == 0)
+		|| (ft_strncmp(operation, "sb", -1) == 0)
 		|| (ft_strncmp(operation, "ss", -1) == 0))
 		swap(data, operation);
 	else if ((ft_strncmp(operation, "pa", -1) == 0)
